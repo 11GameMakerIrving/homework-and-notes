@@ -1,6 +1,7 @@
-//ÇóÒ»¸öÊıÁĞÖĞ£¬Á¬Ğø×ÓÁĞµÄºÍ×î´óÎª¶àÉÙ£¬ÈôÎª¸ºÊıÔòÊä³ö0
-
+//æ±‚ä¸€ä¸ªæ•°åˆ—ä¸­ï¼Œè¿ç»­å­åˆ—çš„å’Œæœ€å¤§ä¸ºå¤šå°‘ï¼Œè‹¥ä¸ºè´Ÿæ•°åˆ™è¾“å‡º0
+//ä¸€ç»„æ•°åˆ—ï¼Œ-1ï¼Œ-2ï¼Œ5ï¼Œ-4ï¼Œ6ï¼Œ7ï¼Œ-2ï¼Œåˆ™ä¸º5-4+6+7ã€‚4ï¼Œ-3ï¼Œ5ï¼Œ-6ï¼Œ-2ï¼Œ5ï¼Œåˆ™ä¸º4-3+5ã€‚-1ï¼Œ-2ï¼Œ-3ï¼Œåˆ™ä¸º0ã€‚
 ///According to time complexity,answers are classified into 4 classes by descending order
+//å››ç§æ–¹æ³•ï¼Œå››ä¸ªå¤æ‚åº¦
 
 #include<iostream>
 #include<math.h>
@@ -93,7 +94,7 @@ int DivideAndQonquer(int list[], int left,int right)
 {
 	int MaxLeftSum, MaxRightSum,MaxLeftBorderSum,MaxRightBorderSum, LeftBorderSum, RightBorderSum,center,i;
 
-	if (left == right) //µİ¹éµÄÖÕÖ¹Ìõ¼ş£¬¼´×ÓÁĞÖ»ÓĞÒ»¸öÊı×Ö
+	if (left == right) //é€’å½’çš„ç»ˆæ­¢æ¡ä»¶ï¼Œå³å­åˆ—åªæœ‰ä¸€ä¸ªæ•°å­—
 	{
 		if (list[left] > 0)
 			return list[left];
@@ -101,14 +102,14 @@ int DivideAndQonquer(int list[], int left,int right)
 			return 0;
 	}
 
-	//·Ö,µİ¹é
+	//åˆ†,é€’å½’
 	center = (left + right) / 2;
 	MaxLeftSum = DivideAndQonquer(list, left, center);
 	MaxRightSum = DivideAndQonquer(list, center + 1, right);
 
-	//¿ç·Ö½çÏß×ÓÁĞºÍ
+	//è·¨åˆ†ç•Œçº¿å­åˆ—å’Œ
 	MaxLeftBorderSum = 0, LeftBorderSum = 0;
-	for (i = center; i >= left; i--) //´ÓÖĞÏßÏò×óÉ¨Ãè
+	for (i = center; i >= left; i--) //ä»ä¸­çº¿å‘å·¦æ‰«æ
 	{
 		LeftBorderSum += list[i];
 		if (LeftBorderSum > MaxLeftBorderSum)
@@ -117,7 +118,7 @@ int DivideAndQonquer(int list[], int left,int right)
 		}
 	}
 	MaxRightBorderSum = 0, RightBorderSum = 0;
-	for (i = center + 1; i <= right; i++) //´ÓÖĞÏßÏòÓÒÉ¨Ãè
+	for (i = center + 1; i <= right; i++) //ä»ä¸­çº¿å‘å³æ‰«æ
 	{
 		RightBorderSum += list[i];
 		if (RightBorderSum > MaxRightBorderSum)
@@ -130,7 +131,7 @@ int DivideAndQonquer(int list[], int left,int right)
 	return Max3(MaxLeftSum, MaxRightSum, MaxLeftBorderSum + MaxRightBorderSum);
 }
 
-int f3(int n, int arr[]) //Ìá¹©ÓëÇ°Á½ÖÖËã·¨ÏàÍ¬µÄº¯Êı½Ó¿Ú
+int f3(int n, int arr[]) //æä¾›ä¸å‰ä¸¤ç§ç®—æ³•ç›¸åŒçš„å‡½æ•°æ¥å£
 {
 	return DivideAndQonquer(arr, 0, n - 1);
 }
