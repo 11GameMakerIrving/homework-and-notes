@@ -1,7 +1,7 @@
 //求一个数列中，连续子列的和最大为多少，若为负数则输出0
 //一组数列，-1，-2，5，-4，6，7，-2，则为5-4+6+7。4，-3，5，-6，-2，5，则为4-3+5。-1，-2，-3，则为0。
 ///According to time complexity,answers are classified into 4 classes by descending order
-//四种方法，四个复杂度
+//四种方法，四个复杂度。f1,f2穷举，f3分而治之，f4在线处理
 
 #include<iostream>
 #include<math.h>
